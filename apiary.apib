@@ -1,0 +1,121 @@
+FORMAT: 1A
+HOST: http://DashPorter.apiblueprint.org/
+
+
+# DashPorter API
+
+DashPorter is a simple API allowing drivers stuck on the road 
+to make service requests for their cars.
+
+## Services Collection [/services]
+
+
+### Service [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "service_type": "Tire Change",
+                "cost": 70,
+                "estimated_time": "30 minutes",
+                "provider": "AAA",
+            }
+        ]
+
+### Add New Service [POST]
+
++ Request (application/json)
+
+        {
+            "service_type": "Tire Change",
+            "estimated_time":datetime.timedelta(minutes = 30),
+            "cost": 70,
+            "provider": "AAA",
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+## Questions Collection [/users]
+
+### Driver_User [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "name": "John Doe",
+                "username": "JD_123",
+                "cars": [car_object_one, car_object_two], 
+                "email": "JD_123@gmail.com",
+            }
+        ]
+
+### Add New Driver_User [POST]
+
++ Request (application/json)
+
+        {
+            "name": "John Doe",
+            "username": "JD_123",
+            "email": "JD_123@gmail.com",
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+## Questions Collection [/cars]
+
+### Car [GET]
++ Response 200 (application/json)
+
+        [
+            {
+                "make": "Honda Civic",
+                "model": 70,
+                "year": 1996, 
+            }
+        ]
+### Add New Car [POST]
++ Request (application/json)
+
+        {
+            "make": "Honda Civic",
+            "model": 70,
+            "year": 1996, 
+        }
++ Response 201 (application/json)
+
+    + Headers
+
+## Request Collection [/requests]
+
+### E_Service_Request [GET]
++ Response 200 (application/json)
+
+        [
+            {
+                "service_type": "Tire Change",
+                "cost": 70,
+                "estimated_time": 30,  
+                "provider": "AAA",
+                "requester": Driver_User_Object,
+                "time_created": "2015-08-05T08:40:51.620Z",
+            }
+        ]
+### E_Service_Request [POST]
++ Request (application/json)
+
+        {
+                "service_type": "Tire Change",
+                "cost": 70,
+                "estimated_time": 30,  
+                "provider": "AAA",
+                "requester": Driver_User_Object,
+                "time_created": "2015-08-05T08:40:51.620Z",
+        }
++ Response 201 (application/json)
+    + Headers
